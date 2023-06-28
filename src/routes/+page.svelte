@@ -51,10 +51,18 @@
 
 	<div>
 		<table>
+			<colgroup>
+				<col span="1">
+				<col span="1" style="width: 40%;">
+				<col span="1" style="width: 10%;">
+				<col span="1" style="width: 10%;">
+				<col span="1" style="width: 10%;">
+				<col span="1" style="width: 10%;">
+			 </colgroup>
 			<tr class="border-2 border-[#a39070]">
 				<th></th>
 				<th>Værelser & Suiter</th>
-				<th>Antal gæster</th>
+				<th class="min-w-fit">Antal gæster</th>
 				<th>Pris</th>
 				<th>Antal værelser</th>
 				<th></th>
@@ -64,7 +72,7 @@
 					<td>
 						<div class="flex relative items-center">
 							<span class="arrow-btn left-2"><ChevronLeft color="#a39070" /></span>
-							<img class="max-w-xs rounded-md" src={room.image} alt={room.name} />
+							<img class="min-w-[200px] rounded-md" src={room.image} alt={room.name} />
 							<span class="arrow-btn right-2"><ChevronRight color="#a39070" /></span>
 						</div>
 					</td>
@@ -73,7 +81,7 @@
 						<p class="text-xs text-slate-400 mb-4">Max. {room.meta.people} pers.  |  {room.meta.size} m2</p>
 						<p>{room.description}</p>
 					</td>
-					<td>
+					<td style="">
 						<select class="select" name="guests" id="guests" bind:value={selects[room.id-1].people} on:change={onChange}>
 							{#each Array(room.meta.people) as _, i}
 								<option value={i+1} selected={i+1 === 2}>{i+1}</option>
