@@ -60,7 +60,7 @@
 				<col span="1" style="width: 10%;">
 			 </colgroup>
 			<tr class="border-2 border-[#a39070]">
-				<th></th>
+				<th class="h-[60px]"></th>
 				<th>Værelser & Suiter</th>
 				<th class="min-w-fit">Antal gæster</th>
 				<th>Pris</th>
@@ -81,17 +81,17 @@
 						<p class="text-xs text-slate-400 mb-4">Max. {room.meta.people} pers.  |  {room.meta.size} m2</p>
 						<p>{room.description}</p>
 					</td>
-					<td style="">
+					<td class="text-center">
 						<select class="select" name="guests" id="guests" bind:value={selects[room.id-1].people} on:change={onChange}>
 							{#each Array(room.meta.people) as _, i}
 								<option value={i+1} selected={i+1 === 2}>{i+1}</option>
 							{/each}
 						</select>
 					</td>
-					<td>
+					<td class="text-center">
 						<p>{room.price} kr.</p>
 					</td>
-					<td>
+					<td class="text-center">
 						<select class="select" name="rooms" id="rooms" bind:value={selects[room.id-1].rooms} on:change={onChange}>
 							<option value="0" selected>0</option>
 							{#each Array(room.availableRooms) as _, i}
@@ -102,8 +102,8 @@
 				{#if room.id == 1}
 					<td rowspan={data.rooms.length} class="align-top text-center" style="padding: 20px !important">
 						<p>{num_rooms} værelse{num_rooms != 1 ? 'r': ''}</p>
-						<p>{sum} kr.</p>
-						<a class="btn btn-primary" href="https://stammershalle-badehotel.dk/book-ophold-paa-hotellet/">
+						<p class="mb-4">{sum} kr.</p>
+						<a class="btn btn-primary" style="display: block" href="https://stammershalle-badehotel.dk/book-ophold-paa-hotellet/">
 							Book nu
 						</a>
 					</td>
@@ -137,15 +137,20 @@
 	}
 
 	.select {
-		@apply border-2 border-[#a39070] rounded-md px-2 py-1 text-[#a39070] text-center;
+		@apply border-2 border-[#a39070] rounded-md px-6 py-2 text-[#a39070] text-center;
 	}
 
 	.select:hover {
 		cursor: pointer;
+		background-color: #a3907020;
 	}
 
 	.arrow-btn {
 		@apply absolute bg-white rounded-3xl p-1;
+	}
+
+	.arrow-btn:hover {
+		cursor: pointer;
 	}
 
 	td {
