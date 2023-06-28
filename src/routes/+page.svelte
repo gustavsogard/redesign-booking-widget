@@ -1,9 +1,19 @@
-<script>
+<script lang="ts">
 	import { ChevronLeft, User2 } from 'lucide-svelte';
 
 	export let data;
 
-	let selects = [...data.rooms.map(room => {
+	type Room = {
+		id: number,
+		name: string,
+		price: number,
+		image: string,
+		description: string,
+		meta: {size: number, people: number}[],
+		availableRooms: number
+	}
+
+	let selects = [...data.rooms.map((room: Room) => {
 		return {
 			id: room.id,
 			price: room.price,
