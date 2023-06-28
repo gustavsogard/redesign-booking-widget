@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronLeft, User2 } from 'lucide-svelte';
+	import { ChevronLeft, ChevronRight } from 'lucide-svelte';
 
 	export let data;
 
@@ -62,7 +62,11 @@
 			{#each data.rooms as room}
 				<tr>
 					<td>
-						<img class="max-w-xs rounded-md" src={room.image} alt={room.name} />
+						<div class="flex relative items-center">
+							<span class="arrow-btn left-2"><ChevronLeft color="#a39070" /></span>
+							<img class="max-w-xs rounded-md" src={room.image} alt={room.name} />
+							<span class="arrow-btn right-2"><ChevronRight color="#a39070" /></span>
+						</div>
 					</td>
 					<td style="padding: 20px !important">
 						<p class="font-['Inria_Serif'] font-bold text-xl mb-2">{room.name}</p>
@@ -132,13 +136,13 @@
 		cursor: pointer;
 	}
 
+	.arrow-btn {
+		@apply absolute bg-white rounded-3xl p-1;
+	}
+
 	td {
 		@apply p-2 border-2 border-[#a39070];
 	}
-
-	/* tr :not(:first-child) {
-		@apply border-b-2;
-	} */
 
 	th {
 		@apply text-left;
